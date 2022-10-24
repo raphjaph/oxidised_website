@@ -1,0 +1,17 @@
+<hr/>
+<nav>
+    {% if current_path == "/" %}
+    home
+    {% else %}
+    <a href="/">home</a>
+    {% endif %}
+
+    &bull;
+
+    {% if current_path == "/bookshelf" %}
+    bookshelf
+    {% else %}
+    <a href="/bookshelf/">bookshelf</a>
+    {% endif %}
+</nav>
+<hr/>

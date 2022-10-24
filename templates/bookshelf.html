@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h4>{{ section.title }}</h4>
+{{ section.content  | safe }}
+
+
+<ul class="books" id="books">
+{% for page in section.pages %}
+{% set cover = page.assets %}
+{{ cover }}
+
+
+{% endfor %}
+
+</ul>
+
+{% endblock content %}
+
+{#
+
+    {{ $cover := index (.Resources.ByType "image") 0 }}
+    {{ if $cover }}
+        {{ $cover := $cover.Resize "200x" }}
+        <li>
+        <a href="{{ .Permalink }}">
+            <img src="{{ $cover.RelPermalink }}">
+        </a>
+        </li>
+    {{ end }}
+{{ end }}
+
+#}

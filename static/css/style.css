@@ -136,18 +136,10 @@ ul.books > li {
     padding: 13px;
 }
 
-.books h4 {
-    margin: 0;
-    /* 
-     * em are similar to %; they scale according to default text size; but they cascade
-     * font-size/line-height font-family
-    */
-    font: 0.9em/1.2em sans-serif;
-}
-
-.books p {
-    margin: 0;
-    font: 0.8em/1.1em sans-serif;
+.book {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 footer {

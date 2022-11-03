@@ -5,30 +5,20 @@
 <h4>{{ section.title }}</h4>
 {{ section.content  | safe }}
 
-
 <ul class="books" id="books">
-{% for page in section.pages %}
-{% set cover = page.assets %}
-{{ cover }}
-
-
+{% for book in section.pages %}
+    {% for asset in book.assets %}
+        {% if asset is matching(".jpeg|.png|.cover.") %}
+        {% set cover = resize_image(path=asset, width=200, op="fit_width") %}
+        <li>
+        <a href="{{ book.permalink }}">
+            <img src="{{ cover.url }}" />
+        </a>
+        </li>
+        {%- endif %}
+    {% endfor %}
 {% endfor %}
 
 </ul>
 
 {% endblock content %}
-
-{#
-
-    {{ $cover := index (.Resources.ByType "image") 0 }}
-    {{ if $cover }}
-        {{ $cover := $cover.Resize "200x" }}
-        <li>
-        <a href="{{ .Permalink }}">
-            <img src="{{ $cover.RelPermalink }}">
-        </a>
-        </li>
-    {{ end }}
-{{ end }}
-
-#}

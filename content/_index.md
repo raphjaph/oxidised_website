@@ -42,8 +42,6 @@ I follow Lightning Network development the closest and run a small bitcoin and
 lightning node.
 It's fun to program permissionlessly on top of Bitcoin and making magic internet 
 money the default currency of the internet. 
-If you want to help me with some of my server costs or buy me a coffee, you can 
-send some sats to my lightning address 
 </p>
 
 <h4>About Site</h4>

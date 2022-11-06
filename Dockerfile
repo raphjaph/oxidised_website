@@ -1,16 +1,11 @@
-FROM rust:slim AS builder
+FROM rust:slim
 
-RUN apt-get update -y && \
-  apt-get install -y make g++ libssl-dev && \
-  rustup target add x86_64-unknown-linux-gnu
+RUN apt-get update -y
 
 WORKDIR /website
 COPY . .
 
-RUN cargo build --release --target x86_64-unknown-linux-gnu
+RUN cargo install zola
 
-
-FROM gcr.io/distroless/cc
-COPY --from=builder /app/target/x86_64-unknown-linux-gnu/release/zola /bin/zola
 ENTRYPOINT [ "/bin/zola" ]
 CMD ["build"]

@@ -14,26 +14,28 @@
     <header>
 
         <div class="infos">
-            <a href="/"><h1>raphael</h1></a>
+            <a id="random-link" title="take me somewhere random" target=_blank onclick=getRandomLink()>
+                <h1>raphael</h1>
+            </a>
             <ul>
             <li>
                 <a href="/41E04F0D.txt">
-                    <img src="/images/key.svg" title="PGP key"/>
+                    <img src="/images/key-white.png" title="PGP key"/>
                 </a>
             </li>
             <li>
                 <a href="mailto:raphjaph@protonmail.com">
-                    <img src="/images/email.svg" title="mail"/>
+                    <img src="/images/email-white.png" title="mail"/>
                 </a>
             </li>
             <li>
                 <a href="https://github.com/raphjaph">
-                    <img src="/images/github.svg" title="my repo"/>
+                    <img src="/images/github-white.png" title="my repo"/>
                 </a>
             </li>
             <li>
                 <a href="https://t.me/raphjaph">
-                    <img src="/images/telegram.png" title="please don't spam me"/>
+                    <img src="/images/telegram-white.png" title="please don't spam me"/>
                 </a>
             </li>
             </ul>
@@ -50,7 +52,22 @@
 
     <footer>
         last updated {{ now() | date(format="%e %B %Y") }}<br/>
-        brought to you by <a href="https://github.com/raphjaph/oxidised-website">this code</a>
+        brought to you by <a href="https://github.com/raphjaph/oxidised_website">this code</a>
     </footer>
-
 </html>
+
+<script>
+function getRandomLink() {
+    fetch("https://raph.ee/bookmarks.txt")
+        .then( r => r.text())
+        .then( function(text) {
+            var lines = text.split("\n");
+            var randLineNum = Math.floor(Math.random() * lines.length);
+            var link = lines[randLineNum]
+            document.querySelectorAll("#random-link").forEach(element => {
+                element.setAttribute("href", link);
+            })
+        });
+};
+getRandomLink();
+</script>

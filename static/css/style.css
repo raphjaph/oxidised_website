@@ -22,6 +22,7 @@ header .avatar img {
 header h1 {
     text-align: left;
     margin-bottom: 3px;
+    color: white;
 }
 
 header a {
@@ -52,16 +53,16 @@ nav {
     text-align: center;
 }
 
-nav a {
+a {
     color: grey;
 }
 
-nav a:visited {
+a:visited {
     color: grey;
 }
 
-nav a:hover {
-    color: red;
+a:hover {
+    color: #b605fc;
 }
 
 body {
@@ -69,6 +70,9 @@ body {
     max-width: 55em;
     margin: 1em auto;
     padding: 0 .6em;
+    /* color: #f2f2f2; */
+    color: #e5e5e5;
+    background-color: #262528;
 }
 
 h1, h2, h3 {
@@ -137,9 +141,8 @@ ul.books > li {
 }
 
 .book {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    display: flex;
+    justify-content: space-around;
 }
 
 footer {

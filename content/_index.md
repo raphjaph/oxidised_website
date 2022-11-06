@@ -18,7 +18,7 @@ on my own servers.
 <p>
 Generally optimistic, I try to keep a stoic attitude towards life's random twists,
 while recognizing that this randomness can lead to serendipitous opportunities.
-I enjoy the craft of <a href=/recipes>cooking</a> because it is something you physically create 
+I enjoy the craft of cooking because it is something you physically create 
 with your hands, and I feel like you don't get that enough nowadays.
 This, in addition to building a sustainable workout routine, will hopefully keep me physically 
 and mentally fit until I die.
@@ -58,7 +58,7 @@ organic linking is what makes browsing the internet fun.
 I hope this website can be part of that process, so to explore a random link/bookmark 
 of mine, you can just click 
 <a id="random-link" title="take me somewhere random" target=_blank onclick=getRandomLink()>here</a>
-or the avatar on the top right.
+or the name on the top left.
 So just click around a bit, and you'll find some neat internet nuggets ;)
 If I get intriguing enough content on this site, some links might some day point here.
 </p>

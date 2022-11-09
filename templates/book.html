@@ -10,13 +10,7 @@
 
 <div>
 
-<a href=
-{%- for asset in page.assets -%}
-    {%- if asset is matching("[.](pdf|m4b|epub)") -%}
-        "{{ asset }}"
-    {%- endif -%}
-{%- endfor -%}
->
+    <a href="/s/bookshelf/{{ page.components[1] }}">
 
 {%- for asset in page.assets -%}
     {%- if asset is matching(".jpeg|.png|.cover.") -%}

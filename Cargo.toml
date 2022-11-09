@@ -4,10 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-axum = "0.5.17"
 tokio = { version = "1.21.2", features = [ "full" ] }
-tower-http = { version =  "0.3.4", features = [ "fs" ] }
-tower = "0.4.13"
-rust-embed = "6.4.2"
-mime_guess = "2.0.4"
-http = "0.2.8"
+warp = "0.3.3"
+pretty_env_logger = "0.4.0"
+toml = "0.5.9"
+serde = "1.0.147"
+serde_derive = "1.0.147"

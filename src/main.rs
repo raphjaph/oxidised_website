@@ -8,12 +8,12 @@ use {
 };
 
 #[derive(Deserialize)]
-struct Config {
-    extra: Extra,
+struct TomlFile {
+    extra: Config,
 }
 
 #[derive(Deserialize)]
-struct Extra {
+struct Config {
     zola_site: String,
     static_dir: String,
 }
@@ -21,19 +21,16 @@ struct Extra {
 #[launch]
 fn rocket() -> _ {
     build_site();
-    let config = read_config();
-
-    let zola = FileServer::from(config.zola_site).rank(1);
-    let heavy_content = FileServer::from(config.static_dir);
+    let config = parse_config();
 
     rocket::build()
-        .mount("/", zola)
-        .mount("/s", heavy_content)
+        .mount("/", FileServer::from(config.zola_site).rank(1))
+        .mount("/s", FileServer::from(config.static_dir))
 }
 
-fn read_config() -> Extra {
+fn parse_config() -> Config {
     let contents = std::fs::read_to_string("config.toml").expect("could not read config.toml");
-    let config: Config = toml::from_str(&contents).expect("unable to parse config");
+    let config: TomlFile = toml::from_str(&contents).expect("unable to parse config");
 
     config.extra
 }

@@ -14,4 +14,4 @@ highlight_code = true
 
 [extra]
 zola_site = "./public"
-static_dir = "/Users/raphael/Documents/books/bookshelf"
+static_dir = "./static"

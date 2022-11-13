@@ -1,5 +1,5 @@
 # base_url = "https://raph.ee"
-base_url = "http://localhost:3030"
+base_url = "http://localhost:8000"
 
 # Whether to automatically compile all Sass files in the sass directory
 # compile_sass = true
@@ -14,5 +14,4 @@ highlight_code = true
 
 [extra]
 zola_site = "./public"
-static_dir = "./s"
-auth_dir = "./s/bookshelf"
+static_dir = "/Users/raphael/Documents/books/bookshelf"

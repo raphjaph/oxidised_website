@@ -1,8 +1,10 @@
+#[macro_use]
+extern crate rocket;
+
 use {
+    rocket::fs::FileServer,
     serde_derive::Deserialize,
-    std::net::SocketAddr,
     std::process::Command,
-    warp::{fs, get, path, Filter},
 };
 
 #[derive(Deserialize)]
@@ -16,27 +18,17 @@ struct Extra {
     static_dir: String,
 }
 
-#[tokio::main]
-async fn main() {
-    pretty_env_logger::init();
-
+#[launch]
+fn rocket() -> _ {
+    build_site();
     let config = read_config();
 
-    build_site();
+    let zola = FileServer::from(config.zola_site).rank(1);
+    let heavy_content = FileServer::from(config.static_dir);
 
-    let address: SocketAddr = "127.0.0.1:3030".parse().expect("Unable to parse address");
-
-    let zola_site = get().and(fs::dir(config.zola_site));
-
-    let favicon = get()
-        .and(path("favicon.ico"))
-        .and(fs::file("./public/images/favicon.png"));
-
-    let static_assets = path("s").and(fs::dir(config.static_dir));
-
-    let routes = zola_site.or(static_assets).or(favicon);
-
-    warp::serve(routes).run(address).await;
+    rocket::build()
+        .mount("/", zola)
+        .mount("/s", heavy_content)
 }
 
 fn read_config() -> Extra {
